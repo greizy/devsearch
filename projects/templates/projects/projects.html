@@ -2,6 +2,27 @@
 
 {% block content %}
 <h1> Projects templates </h1>
-<p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem sed quasi numquam omnis suscipit quia ad architecto id quas 
-    veniam laborum reprehenderit dignissimos quae, qui odio dolore aspernatur laboriosam vel?</p>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Positive votes</th>
+        <th>Votes</th>
+        <th></th>
+    </tr>
+    {% for project in projects %}
+    <tr>
+        <td>{{project.title}}</td>
+        <td>{{project.vote_ratio}}</td>
+        <td>{{project.vote_total}}</td>
+        <td>{{project.created}}</td>
+        <td> <a href= "{% url 'project' project.id %}"> View </a> </td>     
+        <td> <a href= "{% url 'updateProject' project.id %}"> Update </a> </td>  
+        <td> <a href= "{% url 'deleteProject' project.id %}"> Delete </a> </td> 
+    </tr>
+    {% endfor %}
+</table>
+
+
 {% endblock content %}
+
